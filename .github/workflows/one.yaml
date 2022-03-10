@@ -24,7 +24,7 @@ jobs:
     - name: Tar
       run: tar -cvf hello.tar .
 
-    - name Upload
+    - name: Upload
       uses: actions/upload-artifact@v3
       with:
         name: hello
