@@ -15,11 +15,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: cat README.MD
-      run: cat README.MD
+    - name: cat README.md
+      run: cat README.md
 
     - name: Replace
-      run: sed -i 's/Hello/Goodbye/' README
+      run: sed -i 's/Hello/Goodbye/' README.md
 
     - name: Tar
       run: tar -cvf hello.tar .
