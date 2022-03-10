@@ -1,0 +1,31 @@
+name: One
+on:
+  push: 
+  pull_request:
+    types:
+      - assigned 
+      - opened 
+      - synchronize 
+      - reopened
+jobs:
+  build:
+    name: One
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: cat README.MD
+      run: cat README.MD
+
+    - name: Replace
+      run: sed -i 's/Hello/Goodbye/' README
+
+    - name: Tar
+      run: tar -cvf hello.tar .
+
+    - name Upload
+      uses: actions/upload-artifact@v3
+      with:
+        name: hello
+        path: hello.tar

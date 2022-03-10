@@ -1,0 +1,27 @@
+name: Two
+on:
+  workflow_run:
+    workflows:
+      - One
+    types:
+      - completed
+    branches:
+      - main
+
+jobs:
+  two:
+    name: 'Two'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Checkout source code'
+        uses: 'actions/checkout@v2'
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Print environment
+        run: env
+
+      - name: Print event file
+        run: cat ${GITHUB_EVENT_PATH}
+
